@@ -27,7 +27,11 @@ function updateGrid(width, height) {
       e.target.style.backgroundColor = "aqua";
     });
     gridDiv.addEventListener("mouseleave", (e) => {
-      e.target.style.backgroundColor = "lightblue";
+      e.target.style.backgroundColor = `rgb(${Math.floor(
+        255 * Math.random()
+      )},${Math.floor(255 * Math.random())},${Math.floor(
+        255 * Math.random()
+      )})`;
     });
     gridContainer.appendChild(gridDiv);
   }
