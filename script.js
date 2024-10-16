@@ -8,19 +8,16 @@ body.appendChild(btn);
 body.appendChild(gridContainer);
 
 function updateGrid(width, height) {
-  let gridWidth = "60px";
-  let tempWith = 0;
+  let gridWidth = "6.25vh";
+  let tempWith = 6.25;
   if (width > 16) {
-    gridWidth = `${960 / width}px`;
-    tempWith = 960 / width;
+    gridWidth = `${100 / width}vh`;
+    tempWith = 100 / width;
   } else if (height > 16) {
-    gridWidth = `${960 / height}px`;
-    tempWith = 960 / height;
-  } else {
-    gridWidth = "60px";
-    tempWith = 60;
+    gridWidth = `${100 / height}vh`;
+    tempWith = 100 / height;
   }
-  gridContainer.style.width = `${Number(tempWith) * Number(width)}px`;
+  gridContainer.style.width = `${Number(tempWith) * Number(width)}vh`;
   for (let j = 0; j < height * width; j++) {
     const gridDiv = document.createElement("div");
     gridDiv.className = "grid-box";
