@@ -30,10 +30,10 @@ body {
 }
 
 .grid-box {
-  border: 0.2vh solid black;
-  background-color: grey;
+  border: 0.1vh solid grey;
+  background-color: papayawhip;
 }
 
-/* .grid-box:hover {
+.grid-box:hover {
   background-color: aqua;
-} */
+}

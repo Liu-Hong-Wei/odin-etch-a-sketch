@@ -23,15 +23,21 @@ function updateGrid(width, height) {
     gridDiv.className = "grid-box";
     gridDiv.style.width = gridWidth;
     gridDiv.style.height = gridWidth;
-    gridDiv.addEventListener("mouseenter", (e) => {
-      e.target.style.backgroundColor = "aqua";
-    });
+    gridDiv.style.opacity = 0.4;
     gridDiv.addEventListener("mouseleave", (e) => {
-      e.target.style.backgroundColor = `rgb(${Math.floor(
-        255 * Math.random()
-      )},${Math.floor(255 * Math.random())},${Math.floor(
-        255 * Math.random()
-      )})`;
+      if (
+        Number(e.target.style.opacity) >= 0.5 &&
+        Number(e.target.style.opacity) < 1
+      ) {
+        e.target.style.opacity = Number(e.target.style.opacity) + 0.1;
+      } else if ( Number(e.target.style.opacity) != 1){
+        e.target.style.backgroundColor = `rgb(${Math.floor(
+          255 * Math.random()
+        )},${Math.floor(255 * Math.random())},${Math.floor(
+          255 * Math.random()
+        )})`;
+        e.target.style.opacity = Number(e.target.style.opacity) + 0.1;
+      }
     });
     gridContainer.appendChild(gridDiv);
   }
