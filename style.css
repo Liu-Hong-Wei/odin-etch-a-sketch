@@ -30,7 +30,7 @@ body {
 }
 
 .grid-box {
-  border: 1px solid black;
+  border: 0.2vh solid black;
   background-color: grey;
 }
 
