@@ -4,11 +4,27 @@
   padding: 0;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#set-grid-btn {
+  height: 50px;
+  width: 200px;
+  background-color: lightblue;
+  border: 1px solid  grey;
+  border-radius: 10px;
+  font-size: 15px;
+  margin: auto;
+}
+
 #grid-container {
+  flex: 0 0 auto;
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  width: 960px;
   justify-content: center;
   align-items: center;
 }
@@ -16,10 +32,8 @@
 .grid-box {
   border: 1px solid black;
   background-color: grey;
-  width: 60px;
-  height: 60px;
 }
 
-.grid-box:hover {
+/* .grid-box:hover {
   background-color: aqua;
-}
+} */

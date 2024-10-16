@@ -1,15 +1,65 @@
 const body = document.querySelector("body");
 const gridContainer = document.createElement("div");
+const btn = document.createElement("button");
+btn.id = "set-grid-btn";
+btn.textContent = "Set the Grid";
 gridContainer.id = "grid-container";
+body.appendChild(btn);
 body.appendChild(gridContainer);
 
-let width = 16;
-let height = 16;
-for (let i = 0; i < width * height; i++) {
-  const gridDiv = document.createElement("div");
-  gridDiv.className = "grid-box";
-  gridDiv.addEventListener("mouseleave", (e) => {
-    gridDiv.style.backgroundColor = "lightblue";
-  });
-  gridContainer.appendChild(gridDiv);
+function updateGrid(width, height) {
+  let gridWidth = "60px";
+  let tempWith = 0;
+  if (width > 16) {
+    gridWidth = `${960 / width}px`;
+    tempWith = 960 / width;
+  } else if (height > 16) {
+    gridWidth = `${960 / height}px`;
+    tempWith = 960 / height;
+  } else {
+    gridWidth = "60px";
+    tempWith = 60;
+  }
+  gridContainer.style.width = `${Number(tempWith) * Number(width)}px`;
+  for (let j = 0; j < height * width; j++) {
+    const gridDiv = document.createElement("div");
+    gridDiv.className = "grid-box";
+    gridDiv.style.width = gridWidth;
+    gridDiv.style.height = gridWidth;
+    gridDiv.addEventListener("mouseenter", (e) => {
+      e.target.style.backgroundColor = "aqua";
+    });
+    gridDiv.addEventListener("mouseleave", (e) => {
+      e.target.style.backgroundColor = "lightblue";
+    });
+    gridContainer.appendChild(gridDiv);
+  }
 }
+
+btn.addEventListener("click", (e) => {
+  let width = 16;
+  let height = 16;
+  while (true) {
+    width = Number(prompt("Enter the width grid number(0 < n <= 100):", 16));
+    height = Number(prompt("Enter the height grid number(0 < n <= 100):", 16));
+    if (
+      typeof width === "number" &&
+      typeof height === "number" &&
+      width > 0 &&
+      height > 0 &&
+      width <= 100 &&
+      height <= 100
+    ) {
+      break;
+    } else {
+      alert("invalid, enter again!");
+    }
+  }
+  const allBoxes = document.querySelectorAll(".grid-box");
+  allBoxes.forEach((node) => {
+    node.remove();
+  });
+  updateGrid(width, height);
+});
+
+updateGrid(16, 16);
